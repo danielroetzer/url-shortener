@@ -1,7 +1,8 @@
 import { Elysia, t } from "elysia";
+import { swagger } from "@elysiajs/swagger"
 import { nanoid } from "nanoid";
 
-// Databas mock
+// Database mock
 let shortenedUrls = [
   {
     origin: 'github.com/danielroetzer',
@@ -12,6 +13,7 @@ let shortenedUrls = [
 const getShortUUID = () => nanoid(12)
 
 const app = new Elysia()
+  .use(swagger())
   .get("/", () => JSON.stringify(shortenedUrls))
   .get("/:shortUrl", ({ params, set }) => {
     const redirectTo = shortenedUrls.find(url => url.short === params.shortUrl)?.origin
