@@ -11,6 +11,7 @@ const shortenedUrls = [
 ];
 
 const getShortUUID = () => nanoid(12);
+import { apiRoutes } from './api';
 
 const app = new Elysia()
   .use(swagger())
@@ -49,6 +50,7 @@ const app = new Elysia()
       }),
     },
   )
+  .use(apiRoutes)
   .listen(3000);
 
 console.log(
