@@ -1,6 +1,13 @@
 {
   "name": "url-shortener",
-  "version": "1.0.50",
+  "description": "A simple URL shortener",
+  "version": "0.0.1",
+  "module": "src/index.js",
+  "private": true,
+  "author": {
+    "name": "Daniel Rötzer",
+    "url": "https://github.com/danielroetzer"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
@@ -23,5 +30,8 @@
     "prettier": "^3.1.1",
     "typescript": "^5.3.3"
   },
-  "module": "src/index.js"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielroetzer/url-shortener"
+  }
 }
