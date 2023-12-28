@@ -1,10 +1,34 @@
 import { swagger } from '@elysiajs/swagger';
 import { Elysia } from 'elysia';
+import packageJson from '../package.json';
 import { apiRoutes } from './api';
 import { pageRoutes } from './pages';
 
 const app = new Elysia()
-  .use(swagger())
+  .use(
+    swagger({
+      documentation: {
+        info: {
+          title: packageJson.name,
+          description: packageJson.description,
+          version: packageJson.version,
+          contact: {
+            name: packageJson.author.name,
+            url: packageJson.author.url,
+          },
+        },
+        tags: [
+          {
+            name: 'api',
+            description: 'API endpoints for URL shortener CRUD operations',
+          },
+          {
+            name: 'pages',
+            description: 'Endpoints for rendered html pages',
+          },
+        ],
+      },
+    }),
   )
   .use(apiRoutes)
   .use(pageRoutes)
