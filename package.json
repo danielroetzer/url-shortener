@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@elysiajs/swagger": "^0.8.0",
-    "elysia": "latest",
+    "elysia": "^0.8.5",
     "nanoid": "^5.0.4"
   },
   "devDependencies": {
