@@ -1,6 +1,7 @@
 import { Elysia, t } from 'elysia';
 import { nanoid } from 'nanoid';
 import { db } from '../db/mock';
+import { isHtmlResponseExpected } from '../utils';
 
 const createUniqueShortUrl = (): string => {
   const short = nanoid(12);
@@ -15,11 +16,19 @@ const createUniqueShortUrl = (): string => {
 export const createHandler = (app: Elysia) => {
   return app.post(
     '/',
-    ({ body }) => {
+    ({ body, headers }) => {
       const url = { originalUrl: body.url, shortUrl: createUniqueShortUrl() };
       db.urls.push(url);
 
-      return { message: 'Created', success: true, url };
+      if (!isHtmlResponseExpected(headers))
+        return { message: 'Created', success: true, url };
+
+      return (
+        <p>
+          Your shortened URL is{' '}
+          <a href={`/${url.shortUrl}`}>{`/${url.shortUrl}`}</a>
+        </p>
+      );
     },
     {
       body: t.Object({
