@@ -1,3 +1,4 @@
+import { staticPlugin } from '@elysiajs/static';
 import { swagger } from '@elysiajs/swagger';
 import { Elysia } from 'elysia';
 import packageJson from '../package.json';
@@ -30,6 +31,7 @@ const app = new Elysia()
       },
     }),
   )
+  .use(staticPlugin())
   .use(apiRoutes)
   .use(pageRoutes)
   .listen(3000);
