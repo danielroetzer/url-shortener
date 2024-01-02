@@ -5,9 +5,13 @@ export function BaseLayout(
     description?: string;
     head?: string;
     title?: string;
+    enableHtmx?: boolean;
   }>,
 ) {
-  const title = `${props.title ?? 'Simple URL shortener'} | Daniel Rötzer`;
+  const title = `${props.title ?? 'Simple URL shortener'} | ${
+    packageJson.author.name
+  }`;
+
   const description = props.description ?? packageJson.description;
 
   return (
@@ -24,23 +28,10 @@ export function BaseLayout(
           />
           <title>{title}</title>
           {props.head}
-          )}
+          {props.enableHtmx && <script src="/public/htmx.min.js" />}
         </head>
-        <body>{props.children}</body>
+        <body hx-headers='{"accept": "text/html"}'>{props.children}</body>
       </html>
     </>
   );
 }
-
-// const html = (
-//   <Layout
-//     head={
-//       <>
-//         <link rel="stylesheet" href="/style.css" />
-//         <script src="/script.js" />
-//       </>
-//     }
-//   >
-//     <div>Hello World</div>
-//   </Layout>
-// );
