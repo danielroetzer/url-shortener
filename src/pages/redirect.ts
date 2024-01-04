@@ -14,7 +14,7 @@ export const redirectHandler = (app: Elysia) => {
         return { message: 'Not found', success: false };
       }
 
-      return Response.redirect(`http://${redirectTo}`, 301);
+      return Response.redirect(redirectTo, 301);
     },
     {
       params: t.Object({

@@ -1,7 +1,7 @@
 export const db = {
   urls: [
     {
-      originalUrl: 'github.com/danielroetzer',
+      originalUrl: 'https://github.com/danielroetzer',
       shortUrl: '1',
     },
   ],
