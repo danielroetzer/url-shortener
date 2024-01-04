@@ -32,7 +32,11 @@ export const createHandler = (app: Elysia) => {
     },
     {
       body: t.Object({
-        url: t.String(),
+        // TODO: add validation for URL
+        url: t.String({
+          description: 'The URL to shorten',
+          example: 'https://example.com',
+        }),
       }),
       detail: {
         tags: ['api'],

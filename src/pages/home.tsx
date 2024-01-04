@@ -8,13 +8,20 @@ export const homeHandler = (app: Elysia) => {
     '/',
     () => (
       <BaseLayout enableHtmx>
-        <form hx-post="/api" hx-target="#response">
-          <h1>Shorten a URL</h1>
-          <label for="url">URL</label>
-          <input id="url" name="url" type="url" />
-          <button>Shorten</button>
-        </form>
-        <div id="response"></div>
+        <main>
+          <form hx-post="/api" hx-target="#response">
+            <h1>Shorten a URL</h1>
+            <label for="url">URL</label>
+            <input
+              id="url"
+              name="url"
+              type="url"
+              placeholder="https://example.com"
+            />
+            <button>Shorten</button>
+          </form>
+          <div id="response" />
+        </main>
       </BaseLayout>
     ),
     {

@@ -27,6 +27,7 @@ export function BaseLayout(
             content="width=device-width, initial-scale=1.0"
           />
           <title>{title}</title>
+          <link rel="stylesheet" href="/public/css/pico.classless.min.css" />
           {props.head}
           {props.enableHtmx && <script src="/public/htmx.min.js" />}
         </head>
